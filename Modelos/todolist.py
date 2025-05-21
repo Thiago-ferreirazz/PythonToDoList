@@ -17,38 +17,37 @@ def main():
     while True:
         mostrar_menu()
         opcao = input("👉 Escolha uma opção: ")
+        match opcao:
+            case "1":
+                titulo = input("Título: ")
+                descricao = input("Descrição: ")
+                while True:
+                    prioridade = input("Prioridade [baixa, média ou alta]: ") or "média"
+                    if prioridade in ["baixa", "média", "alta"]:
+                        break
+                    print("Digite um termo válido!")
 
-        if opcao == "1":
-            titulo = input("Título: ")
-            descricao = input("Descrição: ")
-            while True:
-                prioridade = input("Prioridade [baixa, média ou alta]: ") or "média"
-                if prioridade  in ["baixa", "média", "alta"]:
-                    break
-                print("Digite um termo válido!")
+                manager.adicionar_tarefa(titulo, descricao, prioridade)
+                print("\n✅ Tarefa adicionada!")
 
 
-            manager.adicionar_tarefa(titulo, descricao, prioridade)
-            print("\n✅ Tarefa adicionada!")
+            case "2":
+                print("\n" + "📋 LISTA DE TAREFAS" + "=" * 30)
+                manager.listar_tarefas()
 
-        elif opcao == "2":
-            print("\n" + "📋 LISTA DE TAREFAS" + "=" * 30)
-            manager.listar_tarefas()
+            case "3":
+                try:
+                    indice = int(input("Número da tarefa a remover: "))
+                    manager.remover_tarefa(indice)
+                    print("\n🗑️ Tarefa removida!")
+                except (ValueError, IndexError) as e:
+                    print(f"\n❌ Erro: {e}")
 
-        elif opcao == "3":
-            try:
-                indice = int(input("Número da tarefa a remover: "))
-                manager.remover_tarefa(indice)
-                print("\n🗑️ Tarefa removida!")
-            except (ValueError, IndexError) as e:
-                print(f"\n❌ Erro: {e}")
-
-        elif opcao == "4":
-            print("\n👋 Até logo!")
-            break
-
-        else:
-            print("\n❌ Opção inválida!")
+            case "4":
+                print("\n👋 Até logo!")
+                break
+            case _:
+                print("\n❌ Opção inválida!")
 
 
 if __name__ == "__main__":
