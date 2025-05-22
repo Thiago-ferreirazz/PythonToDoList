@@ -2,12 +2,13 @@
 from Modelos.utilities import Utilities
 from task import Task
 
+
 class TaskManager:
 
     def __init__(self):
         self.tarefas = []
 
-    def adicionar_tarefa(self, titulo, descricao, prioridade = "------"):
+    def adicionar_tarefa(self, titulo, descricao, prioridade="------"):
         nova_tarefa = Task(titulo, descricao, prioridade)
         self.tarefas.append(nova_tarefa)
 
@@ -30,9 +31,9 @@ class TaskManager:
             return True
         return False
 
+    def marcar_concluida(self, num_tarefa):
+        self.tarefas[num_tarefa].status = "Concluida"
+
     def remover_tarefa(self, num_tarefa):
         num_tarefa -= 1
         self.tarefas.pop(num_tarefa)
-
-
-

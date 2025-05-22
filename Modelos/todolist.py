@@ -2,11 +2,8 @@ from task_manager import TaskManager
 from utilities import Utilities
 
 
-
-
 def main():
     manager = TaskManager()
-
 
     while True:
         Utilities.mostrar_menu()
@@ -51,7 +48,8 @@ def main():
                         print("1. Editar título")
                         print("2. Editar descrição")
                         print("3. Editar prioridade")
-                        print("4. Cancelar")
+                        print("4. Marcar como Concluida")
+                        print("5. Cancelar")
 
                         escolha = input("👉 Escolha uma opção: ")
 
@@ -80,8 +78,21 @@ def main():
                                         break
                                     print("❌ Prioridade inválida!")
                             case "4":
+                                print(f"Tem certeza que deseja marcar a tarefa {manager.tarefas[tarefa_idx].titulo} como concluida?")
+                                resposta = input("\nDigite [S] para sim e [N] para não: ").upper()
+                                if resposta == "S":
+                                    manager.marcar_concluida(tarefa_idx)
+                                    print(f"Tarefa{manager.tarefas[tarefa_idx].titulo} atualizada para concluida")
+                                elif resposta == "N":
+                                    print("Operação cancelada")
+                                else:
+                                    print("Digite [S] ou [N]")
+                                break
+
+                            case "5":
                                 print("Saindo...")
                                 break
+
                             case _:
                                 print("❌ Opção inválida!")
 
