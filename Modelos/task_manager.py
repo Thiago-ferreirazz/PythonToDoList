@@ -7,7 +7,7 @@ class TaskManager:
 
     def __init__(self):
         self.tarefas = []
-        #teste20
+        #teste21
 
 
     def adicionar_tarefa(self, titulo, descricao, prioridade="------"):
