@@ -16,6 +16,7 @@ class TaskManager:
         for i, tarefa in enumerate(self.tarefas, 1):
             print(f"\n🔷 Tarefa {i}")
             print(tarefa)
+        #reste arroz
 
     def editar_tarefa(self, tarefa_idx, campo, novo_valor):
         tarefa = self.tarefas[tarefa_idx]
